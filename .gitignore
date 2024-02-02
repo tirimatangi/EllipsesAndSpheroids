@@ -1,0 +1,15 @@
+# Compiled source #
+###################
+*.out
+*.dll
+*.exe
+*.o
+*.so
+*.d
+*.a
+
+# CMake leftovers
+Makefile
+CMakeCache.txt
+cmake_*.cmake
+_debs
