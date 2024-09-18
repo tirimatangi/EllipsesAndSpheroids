@@ -17,8 +17,8 @@ Without loss of generality, we can assume that the shared focal point lies at th
 Assume we have $n$ spheroids. Denote the other focal point of spheroid $k=1...n$ by $f^k = (f_x^k, f_y^k, f_y^z)$.
 Assume that $p = (x, y, z)$ is a point where all $n$ spheroids intersect.
 
-Let us denote the distance from $p$ to the origin (i.e. to the shared focal point) by $w$. That is, $w = \vert\vert p \vert\vert$.
-Furthermore, denote the distance from $p$ to the other focal point $f^k$ by $v_k$. That is, $v_{k} = \vert\vert p - f^k \vert\vert$.
+Let us denote the distance from $p$ to the origin (i.e. to the shared focal point) by $w$. That is, $w = \Vert p \Vert$.
+Furthermore, denote the distance from $p$ to the other focal point $f^k$ by $v_k$. That is, $v_{k} = \Vert p - f^k \Vert$.
 
 By definition of the spheroid, the diameter of the $k$'th spheroid is $d_k = w + v_k$, meaning that $v_k = d_k - w$.
 The leads us to the following system of $n+1$ equations.
