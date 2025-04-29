@@ -43,6 +43,7 @@ function [intersectionPoints, relativeModelError] = solveEllipseIntersections(sh
 %                            Note that if there is noise or other inaccuracy in the set of diameters, the all ellipses/spheroids
 %                            may not actually intersect at the given points. In this case distanceError will be large
 %                            so the inaccuracy can be detected.
+%       failFlag           - The intersection point(s) are not accurate.
 %       relativeModelError - Relative difference between the actual squared distance of the calculated intersection point(s)
 %                            from the shared focal point (i.e. x^2+y^2+z^2) and the squared distance predicted by
 %                            the model (i.e. w^2). So relativeModelError = sqrt(abs(x^2+y^2+z^2 - w^2) / x^2+y^2+z^2).
@@ -325,8 +326,14 @@ end
 
 function z = poly2zeros(a,b,c)
 % poly2zeros  Finds zeros of polynomial a*x^2 + b*x + c
-    determinant = sqrt(b*b - 4*a*c);
-    z = (-b + [determinant -determinant]) / (2*a);
+    radical = b*b - 4*a*c;
+    % Avoid loss of accuracy due to subtraction of quantities of same sign.
+    if b >= 0
+        tmp = -sqrt(radical) - b;
+    else
+        tmp = sqrt(radical) - b;
+    end
+    z = [tmp/(2*a) (2*c)/tmp];
 end
 
 function smallIndices = findSmallIndices(v)
